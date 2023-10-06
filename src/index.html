@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head> </head>
+  <body>
+    <h1>Excess Weight Calculator</h1>
+    <form name="weightcalc">
+      <fieldset>
+        <legend>Enter your height</legend>
+        <label class="field_name">Enter Height (f)</label>
+        <input name="height_feet" class="field" onkeyup="calc();" type="text" />
+        <label class="field_name">Enter Height (in)</label>
+        <input
+          name="height_inches"
+          class="field"
+          onkeyup="calc();"
+          type="text"
+        />
+        <br />
+        <br />
+        <legend>Enter your weight</legend>
+        <label class="field_name">Enter Weight (lb)</label>
+        <input name="weight" class="field" onkeyup="calc();" type="text" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Totals</legend>
+        <label class="field_name">Total excess weight</label>
+        <input name="excess" class="field_total" type="text" />
+        <br />
+        <br />
+        <label class="field_name">80% excess weight</label>
+        <input name="eightyexcess" class="field_total" type="text" />
+        <br />
+        <br />
+        <label class="field_name">60% excess weight</label>
+        <input name="sixtyexcess" class="field_total" type="text" />
+        <br />
+        <br />
+        <label class="field_name">40% excess weight</label>
+        <input name="fortyexcess" class="field_total" type="text" />
+        <br />
+        <br />
+        <label class="field_name">20% excess weight</label>
+        <input name="twentyexcess" class="field_total" type="text" />
+      </fieldset>
+    </form>
+
+    <style>
+      fieldset {
+        border: 1px solid #214261;
+      }
+      input[type="text"] {
+        color: #214261;
+        font-size: 16px;
+        padding: 5px;
+      }
+    </style>
+    <script>
+      function calc() {
+        var hf = document.weightcalc.height_feet.value * 12;
+        var hi = document.weightcalc.height_inches.value;
+        var h = Number(hf) + Number(hi);
+        console.log(h);
+        var w = document.weightcalc.weight.value;
+        excess_weight = w - (25 * h * h) / 703;
+        excess_twenty = 0.2 * excess_weight;
+        excess_forty = 0.4 * excess_weight;
+        excess_sixty = 0.6 * excess_weight;
+        excess_eighty = 0.8 * excess_weight;
+        document.weightcalc.excess.value = parseFloat(excess_weight.toFixed(2));
+        document.weightcalc.eightyexcess.value = parseFloat(
+          excess_eighty.toFixed(2),
+        );
+        document.weightcalc.sixtyexcess.value = parseFloat(
+          excess_sixty.toFixed(2),
+        );
+        document.weightcalc.fortyexcess.value = parseFloat(
+          excess_forty.toFixed(2),
+        );
+        document.weightcalc.twentyexcess.value = parseFloat(
+          excess_twenty.toFixed(2),
+        );
+      }
+    </script>
+  </body>
+</html>
