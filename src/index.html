@@ -57,29 +57,15 @@
     </style>
     <script>
       function calc() {
-        var hf = document.weightcalc.height_feet.value * 12;
-        var hi = document.weightcalc.height_inches.value;
-        var h = Number(hf) + Number(hi);
-        console.log(h);
+        var h = Number(document.weightcalc.height_feet.value * 12) + Number(document.weightcalc.height_inches.value);
         var w = document.weightcalc.weight.value;
-        excess_weight = w - (25 * h * h) / 703;
-        excess_twenty = 0.2 * excess_weight;
-        excess_forty = 0.4 * excess_weight;
-        excess_sixty = 0.6 * excess_weight;
-        excess_eighty = 0.8 * excess_weight;
-        document.weightcalc.excess.value = parseFloat(excess_weight.toFixed(2));
-        document.weightcalc.eightyexcess.value = parseFloat(
-          excess_eighty.toFixed(2),
-        );
-        document.weightcalc.sixtyexcess.value = parseFloat(
-          excess_sixty.toFixed(2),
-        );
-        document.weightcalc.fortyexcess.value = parseFloat(
-          excess_forty.toFixed(2),
-        );
-        document.weightcalc.twentyexcess.value = parseFloat(
-          excess_twenty.toFixed(2),
-        );
+        excess_weight = w - (25 * h * h) / 703
+        weights = [1, .2, .4, .6, .8].map((weight) => excess_weight * weight)
+        document.weightcalc.excess.value = parseFloat(weights[0].toFixed(2));
+        document.weightcalc.twentyexcess.value = parseFloat(weights[1].toFixed(2));
+        document.weightcalc.fortyexcess.value = parseFloat(weights[2].toFixed(2));
+        document.weightcalc.sixtyexcess.value = parseFloat(weights[3].toFixed(2));
+        document.weightcalc.eightyexcess.value = parseFloat(weights[4].toFixed(2));
       }
     </script>
   </body>
