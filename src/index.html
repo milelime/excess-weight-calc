@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head> </head>
   <body>
@@ -25,23 +25,44 @@
       <fieldset>
         <legend>Totals</legend>
         <label class="field_name">Total excess weight</label>
-        <input name="excess" class="field_total" type="text" />
-        <br />
-        <br />
+        <input
+          name="excess"
+          class="field_total"
+          type="text"
+          data-percentage="1"
+        />
+        <br /><br />
         <label class="field_name">80% excess weight</label>
-        <input name="eightyexcess" class="field_total" type="text" />
-        <br />
-        <br />
+        <input
+          name="eightyexcess"
+          class="field_total"
+          type="text"
+          data-percentage="0.8"
+        />
+        <br /><br />
         <label class="field_name">60% excess weight</label>
-        <input name="sixtyexcess" class="field_total" type="text" />
-        <br />
-        <br />
+        <input
+          name="sixtyexcess"
+          class="field_total"
+          type="text"
+          data-percentage="0.6"
+        />
+        <br /><br />
         <label class="field_name">40% excess weight</label>
-        <input name="fortyexcess" class="field_total" type="text" />
-        <br />
-        <br />
+        <input
+          name="fortyexcess"
+          class="field_total"
+          type="text"
+          data-percentage="0.4"
+        />
+        <br /><br />
         <label class="field_name">20% excess weight</label>
-        <input name="twentyexcess" class="field_total" type="text" />
+        <input
+          name="twentyexcess"
+          class="field_total"
+          type="text"
+          data-percentage="0.2"
+        />
       </fieldset>
     </form>
 
@@ -57,15 +78,17 @@
     </style>
     <script>
       function calc() {
-        var h = Number(document.weightcalc.height_feet.value * 12) + Number(document.weightcalc.height_inches.value);
-        var w = document.weightcalc.weight.value;
-        excess_weight = w - (25 * h * h) / 703
-        weights = [1, .2, .4, .6, .8].map((weight) => excess_weight * weight)
-        document.weightcalc.excess.value = parseFloat(weights[0].toFixed(2));
-        document.weightcalc.twentyexcess.value = parseFloat(weights[1].toFixed(2));
-        document.weightcalc.fortyexcess.value = parseFloat(weights[2].toFixed(2));
-        document.weightcalc.sixtyexcess.value = parseFloat(weights[3].toFixed(2));
-        document.weightcalc.eightyexcess.value = parseFloat(weights[4].toFixed(2));
+        const getValue = (fieldName) =>
+          parseFloat(document.weightcalc[fieldName].value);
+
+        var h = 12 * getValue("height_feet") + getValue("height_inches");
+        var w = getValue("weight");
+        var excess_weight = w - (25 * h * h) / 703;
+
+        document.querySelectorAll(".field_total").forEach((field) => {
+          let percentage = parseFloat(field.getAttribute("data-percentage"));
+          field.value = (excess_weight * percentage).toFixed(2);
+        });
       }
     </script>
   </body>
