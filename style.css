@@ -6,6 +6,7 @@ button:focus {
   outline-offset: 2px;
 }
 .error {
+  display: none;
   color: #e53e3e; /* Red Text Color */
   font-size: 0.9em; /* Slightly smaller than regular text */
   margin-top: -10px; /* Pulls the error message up a bit */
@@ -13,7 +14,6 @@ button:focus {
   padding: 5px 10px; /* Some padding */
   border-radius: 4px; /* Rounded corners */
   background-color: #fff5f5; /* Light red background color */
-  display: inline-block; /* Make it inline to add icons or other decorations later if needed */
 }
 body {
   font-family: "Arial", sans-serif;

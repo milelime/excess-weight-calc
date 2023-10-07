@@ -33,7 +33,14 @@
   }
 
   function displayErrorMessage(elementId, message) {
-    document.getElementById(elementId).innerText = message;
+    const element = document.getElementById(elementId);
+    element.innerText = message;
+
+    if (message) {
+      element.style.display = "block"; // or 'inline-block'
+    } else {
+      element.style.display = "none";
+    }
   }
 
   function getExcessWeight(height, weight) {
