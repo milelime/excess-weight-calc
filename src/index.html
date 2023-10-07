@@ -1,78 +1,106 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Excess Weight Calculator</h1>
     <form name="weightcalc" id="weightForm">
-      <fieldset>
-        <legend>Enter your height</legend>
-        <label class="field_name">Enter Height (f)</label>
+      <!-- Height Selection -->
+      <label class="field_name">Height</label>
+      <select id="heightUnit">
+        <option value="feet_inches">Feet & Inches</option>
+        <option value="cm">Centimeters</option>
+      </select>
+
+      <div id="heightFeetInches">
+        <label>Feet</label>
         <input name="height_feet" class="field" type="text" />
-        <label class="field_name">Enter Height (in)</label>
+        <span class="error" id="errorHeightFeet"></span>
+
+        <label>Inches</label>
         <input name="height_inches" class="field" type="text" />
-        <br />
-        <br />
-        <legend>Enter your weight</legend>
-        <label class="field_name">Enter Weight (lb)</label>
-        <input name="weight" class="field" type="text" />
-      </fieldset>
+        <span class="error" id="errorHeightInches"></span>
+      </div>
 
-      <fieldset id="totalsFieldset">
-        <legend>Totals</legend>
+      <div id="heightCm" style="display: none">
+        <label>Centimeters</label>
+        <input name="height_cm" class="field" type="text" />
+        <span class="error" id="errorHeightCm"></span>
+      </div>
 
-        <label class="field_name">Total excess weight</label>
-        <div id="excess" class="result_display" data-percentage="1"></div>
-        <br /><br />
-        <label class="field_name">80% excess weight</label>
-        <div
-          id="eightyexcess"
-          class="result_display"
-          data-percentage=".8"
-        ></div>
-        <br /><br />
-        <label class="field_name">60% excess weight</label>
-        <div id="sixtyexcess" class="result_display" data-percentage=".6"></div>
-        <br /><br />
-        <label class="field_name">40% excess weight</label>
-        <div id="fortyexcess" class="result_display" data-percentage=".4"></div>
-        <br /><br />
-        <label class="field_name">20% excess weight</label>
-        <div
-          id="twentyexcess"
-          class="result_display"
-          data-percentage=".2"
-        ></div>
-      </fieldset>
+      <!-- Weight Selection -->
+      <label class="field_name">Weight</label>
+      <select id="weightUnit">
+        <option value="lb">Pounds (lbs)</option>
+        <option value="kg">Kilograms (kg)</option>
+      </select>
 
-      <button type="button" onclick="calc()">Calculate</button>
+      <div id="weightLb">
+        <label>Pounds</label>
+        <input name="weight_lb" class="field" type="text" />
+        <span class="error" id="errorWeightLb"></span>
+      </div>
+
+      <div id="weightKg" style="display: none">
+        <label>Kilograms</label>
+        <input name="weight_kg" class="field" type="text" />
+        <span class="error" id="errorWeightKg"></span>
+      </div>
+
+      <!-- Results Display -->
+      <div id="totals">
+        <label class="field_name">Display results in:</label>
+        <select id="outputUnit">
+          <option value="lbs">Pounds (lbs)</option>
+          <option value="kg">Kilograms (kg)</option>
+        </select>
+        <div class="result_item">
+          <label>Total excess weight</label>
+          <div id="excess" class="result_display" data-percentage="1"></div>
+        </div>
+        <div class="result_item">
+          <label>80% excess weight</label>
+          <div
+            id="eightyexcess"
+            class="result_display"
+            data-percentage="0.8"
+          ></div>
+        </div>
+        <div class="result_item">
+          <label>60% excess weight</label>
+          <div
+            id="sixtyexcess"
+            class="result_display"
+            data-percentage="0.6"
+          ></div>
+        </div>
+        <div class="result_item">
+          <label>40% excess weight</label>
+          <div
+            id="fortyexcess"
+            class="result_display"
+            data-percentage="0.4"
+          ></div>
+        </div>
+        <div class="result_item">
+          <label>20% excess weight</label>
+          <div
+            id="twentyexcess"
+            class="result_display"
+            data-percentage="0.2"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Info Message Display -->
+      <span class="info" id="infoMessage"></span>
+
+      <!-- Calculate Button -->
+      <button type="button">Calculate</button>
     </form>
-    <style>
-      #totalsFieldset {
-        display: none;
-      }
-    </style>
-    <script>
-      function calc() {
-        const getValue = (fieldName) =>
-          parseFloat(document.weightcalc[fieldName].value);
-
-        var h = 12 * getValue("height_feet") + getValue("height_inches");
-        var w = getValue("weight");
-        var excess_weight = w - (25 * h * h) / 703;
-
-        // Dynamically set the results into divs
-        document.querySelectorAll(".result_display").forEach((field) => {
-          let percentage = parseFloat(field.getAttribute("data-percentage"));
-          field.innerText = (excess_weight * percentage).toFixed(2);
-        });
-        document.getElementById("totalsFieldset").style.display = "block";
-      }
-      window.addEventListener("load", function () {
-        document.getElementById("weightForm").reset();
-        document.getElementById("totalsFieldset").style.display = "none";
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

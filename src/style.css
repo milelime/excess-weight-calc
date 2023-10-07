@@ -1,0 +1,81 @@
+#totals {
+  display: none;
+}
+button:focus {
+  outline: 2px solid #f7b42c; /* You can adjust the color and style as per your design */
+  outline-offset: 2px;
+}
+.error {
+  color: #e53e3e; /* Red Text Color */
+  font-size: 0.9em; /* Slightly smaller than regular text */
+  margin-top: -10px; /* Pulls the error message up a bit */
+  margin-bottom: 10px;
+  padding: 5px 10px; /* Some padding */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #fff5f5; /* Light red background color */
+  display: inline-block; /* Make it inline to add icons or other decorations later if needed */
+}
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+input[type="text"] {
+  margin-bottom: 15px;
+}
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
+}
+/* Results Section */
+#totals {
+  margin-top: 30px; /* Increase space between calculate button and results */
+}
+/* Each Result Item */
+.result_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 10px 0;
+}
+/* Result Labels */
+.result_item label {
+  font-weight: bold;
+}
+/* Result Display Values */
+.result_display {
+  font-size: 1.1em;
+  margin-left: 20px;
+}
