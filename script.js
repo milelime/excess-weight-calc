@@ -96,7 +96,7 @@
           "errorHeightInches",
           inches >= 12
             ? "Inches should be less than 12."
-            : "Enter a valid height in inches."
+            : "Enter a valid height in inches.",
         );
         hasError = true;
       } else {
@@ -107,7 +107,7 @@
       if (!isValidInput(height)) {
         displayErrorMessage(
           "errorHeightCm",
-          "Enter a valid height in centimeters."
+          "Enter a valid height in centimeters.",
         );
         hasError = true;
       }
@@ -124,7 +124,7 @@
       if (!isValidInput(weight)) {
         displayErrorMessage(
           "errorWeightKg",
-          "Enter a valid weight in kilograms."
+          "Enter a valid weight in kilograms.",
         );
         hasError = true;
       }
