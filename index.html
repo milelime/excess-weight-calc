@@ -1,106 +1,96 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="https://www.iliakovamd.com/" class="navbar-link">←Go back to IliakovaMD</a>
+    </nav>
     <h1>Excess Weight Calculator</h1>
     <form name="weightcalc" id="weightForm">
-      <!-- Height Selection -->
-      <label class="field_name">Height</label>
-      <select id="heightUnit">
-        <option value="feet_inches">Feet & Inches</option>
-        <option value="cm">Centimeters</option>
-      </select>
-
-      <div id="heightFeetInches">
-        <label>Feet</label>
-        <input name="height_feet" class="field" type="text" />
-        <span class="error" id="errorHeightFeet"></span>
-
-        <label>Inches</label>
-        <input name="height_inches" class="field" type="text" />
-        <span class="error" id="errorHeightInches"></span>
-      </div>
-
-      <div id="heightCm" style="display: none">
-        <label>Centimeters</label>
-        <input name="height_cm" class="field" type="text" />
-        <span class="error" id="errorHeightCm"></span>
-      </div>
-
-      <!-- Weight Selection -->
-      <label class="field_name">Weight</label>
-      <select id="weightUnit">
-        <option value="lb">Pounds (lbs)</option>
-        <option value="kg">Kilograms (kg)</option>
-      </select>
-
-      <div id="weightLb">
-        <label>Pounds</label>
-        <input name="weight_lb" class="field" type="text" />
-        <span class="error" id="errorWeightLb"></span>
-      </div>
-
-      <div id="weightKg" style="display: none">
-        <label>Kilograms</label>
-        <input name="weight_kg" class="field" type="text" />
-        <span class="error" id="errorWeightKg"></span>
-      </div>
-
-      <!-- Results Display -->
-      <div id="totals">
-        <label class="field_name">Display results in:</label>
-        <select id="outputUnit">
-          <option value="lbs">Pounds (lbs)</option>
-          <option value="kg">Kilograms (kg)</option>
+        <!-- Height Selection -->
+        <label class="field_name">Height</label>
+        <select id="heightUnit">
+            <option value="feet_inches">Feet & Inches</option>
+            <option value="cm">Centimeters</option>
         </select>
-        <div class="result_item">
-          <label>Total excess weight</label>
-          <div id="excess" class="result_display" data-percentage="1"></div>
-        </div>
-        <div class="result_item">
-          <label>80% excess weight</label>
-          <div
-            id="eightyexcess"
-            class="result_display"
-            data-percentage="0.8"
-          ></div>
-        </div>
-        <div class="result_item">
-          <label>60% excess weight</label>
-          <div
-            id="sixtyexcess"
-            class="result_display"
-            data-percentage="0.6"
-          ></div>
-        </div>
-        <div class="result_item">
-          <label>40% excess weight</label>
-          <div
-            id="fortyexcess"
-            class="result_display"
-            data-percentage="0.4"
-          ></div>
-        </div>
-        <div class="result_item">
-          <label>20% excess weight</label>
-          <div
-            id="twentyexcess"
-            class="result_display"
-            data-percentage="0.2"
-          ></div>
-        </div>
-      </div>
 
-      <!-- Info Message Display -->
-      <span class="info" id="infoMessage"></span>
+        <div id="heightFeetInches">
+            <label>Feet</label>
+            <input name="height_feet" class="field" type="text" />
+            <span class="error" id="errorHeightFeet"></span>
 
-      <!-- Calculate Button -->
-      <button type="button">Calculate</button>
+            <label>Inches</label>
+            <input name="height_inches" class="field" type="text" />
+            <span class="error" id="errorHeightInches"></span>
+        </div>
+
+        <div id="heightCm" style="display: none">
+            <label>Centimeters</label>
+            <input name="height_cm" class="field" type="text" />
+            <span class="error" id="errorHeightCm"></span>
+        </div>
+
+        <!-- Weight Selection -->
+        <label class="field_name">Weight</label>
+        <select id="weightUnit">
+            <option value="lb">Pounds (lbs)</option>
+            <option value="kg">Kilograms (kg)</option>
+        </select>
+
+        <div id="weightLb">
+            <label>Pounds</label>
+            <input name="weight_lb" class="field" type="text" />
+            <span class="error" id="errorWeightLb"></span>
+        </div>
+
+        <div id="weightKg" style="display: none">
+            <label>Kilograms</label>
+            <input name="weight_kg" class="field" type="text" />
+            <span class="error" id="errorWeightKg"></span>
+        </div>
+
+        <!-- Results Display -->
+        <div id="totals">
+            <label class="field_name">Display results in:</label>
+            <select id="outputUnit">
+                <option value="lbs">Pounds (lbs)</option>
+                <option value="kg">Kilograms (kg)</option>
+            </select>
+            <div class="result_item">
+                <label>Total excess weight</label>
+                <div id="excess" class="result_display" data-percentage="1"></div>
+            </div>
+            <div class="result_item">
+                <label>80% excess weight</label>
+                <div id="eightyexcess" class="result_display" data-percentage="0.8"></div>
+            </div>
+            <div class="result_item">
+                <label>60% excess weight</label>
+                <div id="sixtyexcess" class="result_display" data-percentage="0.6"></div>
+            </div>
+            <div class="result_item">
+                <label>40% excess weight</label>
+                <div id="fortyexcess" class="result_display" data-percentage="0.4"></div>
+            </div>
+            <div class="result_item">
+                <label>20% excess weight</label>
+                <div id="twentyexcess" class="result_display" data-percentage="0.2"></div>
+            </div>
+        </div>
+
+        <!-- Info Message Display -->
+        <span class="info" id="infoMessage"></span>
+
+        <!-- Calculate Button -->
+        <button type="button">Calculate</button>
     </form>
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>
